@@ -19,3 +19,6 @@ sudo apt-get -y install ruby-full
 
 # Jekyll
 sudo gem install jekyll bundler
+
+# Reboot System
+reboot
