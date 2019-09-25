@@ -1,6 +1,7 @@
 #!/bin/bash
+# Basic Tools
 sudo apt-get update
-sudo apt-get -y install apt-transport-https
+sudo apt-get -y install apt-transport-https build-essential
 sudo apt-get update
 
 # VMware Tools
