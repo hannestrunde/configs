@@ -1,12 +1,16 @@
 #!/bin/bash
+# Constans
+BLUE='\033[1;34m'
+NC='\033[0m' # No Color
+
 ## Basic pkgs
-echo '[+] Installing basic pkgs ...'
+echo -e "${BLUE}[+] Installing basic pkgs ...${NC}"
 sudo apt-get update
 sudo apt-get -y install apt-transport-https
 sudo apt-get update
 
 # Virtualenvwrapper
-echo '[+] Installing virtualenvwrapper ...'
+echo -e "${BLUE}[+] Installing virtualenvwrapper ...${NC}"
 pip install virtualenvwrapper
 echo '' >> ~/.bashrc
 echo '# Initialize virtualenvwrapper' >> ~/.bashrc
@@ -15,11 +19,24 @@ echo 'export PROJECT_HOME=$HOME/Devel' >> ~/.bashrc
 echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
 source ~/.bashrc
 
+# Docker
+echo -e "${BLUE}[+] Installing docker ...${NC}"
+apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
+apt-get update
+apt-get remove docker docker-engine docker.io
+apt-get -y install docker-ce
+systemctl enable docker
+
+#autorun
+systemctl enable docker
+
 ## Pentest stuff
-echo '[+] Installing pentest stuff ...'
+echo -e "${BLUE}[+] Installing pentest stuff ...${NC}"
 
 # CME stable
-echo '[*] Installing CME stable ...'
+echo -e "${BLUE}[*] Installing CME stable ...${NC}"
 apt-get install crackmapexec
 
 # CME bleeding edge
@@ -50,12 +67,9 @@ echo '[*] Installing bloodhound ...'
 apt-get install bloodhound
 
 # Empire
-echo '[*] Installing Empire ...'
+echo '[*] Downloading Empire ...'
 cd /opt
 git clone https://github.com/EmpireProject/Empire.git
-cd Empire/setup/
-./install.sh
-ln -s /opt/Empire/empire /usr/local/bin/empire
 
 # Other
 echo '[*] Installing gobuster ...'
