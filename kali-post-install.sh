@@ -69,7 +69,7 @@ deactivate
 
 # Bloodhound
 printf "${BLUE}[*] Installing bloodhound ...${NC}\n"
-apt-get install bloodhound
+apt-get -y install bloodhound
 
 # Empire
 printf "${BLUE}[*] Downloading Empire ...${NC}\n"
