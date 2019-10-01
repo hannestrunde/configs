@@ -1,16 +1,17 @@
 #!/bin/bash
 # Constans
 BLUE='\033[1;34m'
+YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 ## Basic pkgs
-echo -e "${BLUE}[+] Installing basic pkgs ...${NC}"
+printf "${BLUE}[+] Installing basic pkgs ...${NC}\n"
 sudo apt-get update
 sudo apt-get -y install apt-transport-https
 sudo apt-get update
 
 # Virtualenvwrapper
-echo -e "${BLUE}[+] Installing virtualenvwrapper ...${NC}"
+printf "${BLUE}[+] Installing virtualenvwrapper ...${NC}\n"
 pip install virtualenvwrapper
 echo '' >> ~/.bashrc
 echo '# Initialize virtualenvwrapper' >> ~/.bashrc
@@ -20,7 +21,7 @@ echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
 source ~/.bashrc
 
 # Docker
-echo -e "${BLUE}[+] Installing docker ...${NC}"
+printf "${BLUE}[+] Installing docker ...${NC}\n"
 apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
@@ -30,14 +31,14 @@ apt-get -y install docker-ce
 systemctl enable docker
 
 ## Pentest stuff
-echo -e "${BLUE}[+] Installing pentest stuff ...${NC}"
+printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
 
 # CME stable
-echo -e "${BLUE}[*] Installing CME stable ...${NC}"
+printf "${BLUE}[*] Installing CME stable ...${NC}\n"
 apt-get install crackmapexec
 
 # CME bleeding edge
-echo '[*] Installing CME bleeding edge ...'
+printf "${BLUE}[*] Installing CME bleeding edge ...${NC}\n"
 apt-get install -y libssl-dev libffi-dev python-dev build-essential
 cd /opt
 mkvirtualenv cme
@@ -48,7 +49,7 @@ deactivate
 cd /opt
 
 # Impacket bleeding edge
-echo '[*] Installing impacket bleeding edge ...'
+printf "${BLUE}[*] Installing impacket bleeding edge ...${NC}\n"
 cd /opt
 mkvirtualenv impacket
 git clone https://github.com/SecureAuthCorp/impacket
@@ -60,16 +61,16 @@ deactivate
 cd /opt
 
 # Bloodhound
-echo '[*] Installing bloodhound ...'
+printf "${BLUE}[*] Installing bloodhound ...${NC}\n"
 apt-get install bloodhound
 
 # Empire
-echo '[*] Downloading Empire ...'
+printf "${BLUE}[*] Downloading Empire ...${NC}\n"
 cd /opt
 git clone https://github.com/EmpireProject/Empire.git
 
 # Other
-echo '[*] Installing gobuster ...'
+printf "${BLUE}[*] Installing gobuster ...${NC}"
 go get github.com/OJ/gobuster
 
 echo ''
