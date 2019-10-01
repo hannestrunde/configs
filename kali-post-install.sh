@@ -16,7 +16,7 @@ echo '' >> ~/.bashrc
 echo '# Initialize go' >> ~/.bashrc
 echo 'export GOPATH=$HOME/go' >> ~/.bashrc
 echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
-source ~/.bashrc
+. ~/.bashrc
 
 # Virtualenvwrapper
 printf "${BLUE}[+] Installing virtualenvwrapper ...${NC}\n"
@@ -26,7 +26,7 @@ echo '# Initialize virtualenvwrapper' >> ~/.bashrc
 echo 'export WORKON_HOME=$HOME/.virtualenvs' >> ~/.bashrc
 echo 'export PROJECT_HOME=$HOME/Devel' >> ~/.bashrc
 echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
-source ~/.bashrc
+. ~/.bashrc
 
 # Docker
 printf "${BLUE}[+] Installing docker ...${NC}\n"
