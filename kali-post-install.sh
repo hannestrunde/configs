@@ -6,7 +6,7 @@ RED='\033[1;31m'
 NC='\033[0m' # No Color
 
 # Print usage warning
-printf "[!] Make sure to run the script with '${RED}. kali-post-install.sh${NC}' instead of 'sh ./kali-post-install.sh\n"
+printf "[!] Make sure to run the script with '${RED}. kali-post-install.sh${NC}' instead of 'sh ./kali-post-install.sh!\n"
 printf "[!] If you ignore this warning, stuff will likely break!\n"
 read -p "Press any key to proceed or Strg+C to cancel ..." x
 
