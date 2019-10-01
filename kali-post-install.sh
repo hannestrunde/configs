@@ -29,9 +29,6 @@ apt-get remove docker docker-engine docker.io
 apt-get -y install docker-ce
 systemctl enable docker
 
-#autorun
-systemctl enable docker
-
 ## Pentest stuff
 echo -e "${BLUE}[+] Installing pentest stuff ...${NC}"
 
