@@ -58,7 +58,6 @@ pip install -r requirements.txt
 python setup.py build
 python setup.py install
 deactivate
-cd /opt
 
 # Bloodhound
 printf "${BLUE}[*] Installing bloodhound ...${NC}\n"
@@ -69,21 +68,45 @@ printf "${BLUE}[*] Downloading Empire ...${NC}\n"
 cd /opt
 git clone https://github.com/EmpireProject/Empire.git
 
+# EyeWitness Docker
+printf "${BLUE}[*] Installing EyeWitness Docker container ...${NC}\n"
+cd /opt
+git clone https://github.com/FortyNorthSecurity/EyeWitness.git
+cd EyeWitness
+docker build --build-arg user=$USER --tag eyewitness .
+
+# Nikto bleeding Edge
+printf "${BLUE}[*] Installing Nikto bleeding edge ...${NC}\n"
+cd /opt
+git clone https://github.com/sullo/nikto.git
+echo '#!/bin/sh' >> /usr/local/bin/nikto-dev
+echo ''
+echo 'set -e' >> /usr/local/bin/nikto-dev
+echo 'exec /opt/nikto/program/nikto.pl "$@"' >> /usr/local/bin/nikto-dev
+chmod +x /usr/local/bin/nikto-dev
+
+# lgandx/Responder
+printf "${BLUE}[*] Installing Nikto bleeding edge ...${NC}\n"
+cd /opt
+git clone https://github.com/lgandx/Responder.git
+echo '#!/bin/bash' >> /usr/local/bin/responder-dev
+echo '' >> /usr/local/bin/responder-dev
+echo 'cd /opt/Responder/ && ./Responder.py "$@"' >> /usr/local/bin/responder-dev
+chmod +x /usr/local/bin/responder-dev
+
 # Other
 printf "${BLUE}[*] Installing gobuster ...${NC}"
 go get github.com/OJ/gobuster
 
-echo ''
-echo ''
-echo '##############################'
-echo '#         LEFT TO DO         #'
-echo '##############################'
-echo ' - Change neo4j DB password'
-echo '   \ https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/'
-echo ' - Finish installing Empire'
-echo '   \ cd /opt/Empire && bash setup/install.sh'
-echo ' - Install BurpSuite Pro'
-echo '   \ https://portswigger.net/users'
-echo ' - Reboot system'
-echo ''
-echo ''
+printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
+
+printf ' - Change neo4j DB password\n'
+printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/\n\n'
+
+printf ' - Finish installing Empire\n'
+printf '   cd /opt/Empire && bash setup/install.sh\n\n'
+
+printf ' - Install BurpSuite Pro\n'
+printf '   https://portswigger.net/users\n\n'
+
+printf ' - Reboot system\n\n'
