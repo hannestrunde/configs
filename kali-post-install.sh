@@ -10,6 +10,14 @@ sudo apt-get update
 sudo apt-get -y install apt-transport-https golang
 sudo apt-get update
 
+# Set up go environment
+printf "${BLUE}[+] Setting up go environment ...${NC}\n"
+echo '' >> ~/.bashrc
+echo '# Initialize go' >> ~/.bashrc
+echo 'export GOPATH=$HOME/go' >> ~/.bashrc
+echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
+source ~/.bashrc
+
 # Virtualenvwrapper
 printf "${BLUE}[+] Installing virtualenvwrapper ...${NC}\n"
 pip install virtualenvwrapper
@@ -97,6 +105,7 @@ chmod +x /usr/local/bin/responder-dev
 # Other
 printf "${BLUE}[*] Installing gobuster ...${NC}"
 go get github.com/OJ/gobuster
+ln -s ~/go/bin
 
 printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
 
