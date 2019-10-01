@@ -113,7 +113,4 @@ printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-k
 printf ' - Finish installing Empire\n'
 printf '   cd /opt/Empire && bash setup/install.sh\n\n'
 
-printf ' - Install BurpSuite Pro\n'
-printf '   https://portswigger.net/users\n\n'
-
 printf ' - Reboot system\n\n'
