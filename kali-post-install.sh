@@ -82,7 +82,7 @@ echo '   \ https://stealingthe.network/quick-guide-to-installing-bloodhound-in-k
 echo ' - Finish installing Empire'
 echo '   \ cd /opt/Empire && bash setup/install.sh'
 echo ' - Install BurpSuite Pro'
-echo '   \ https://portswigger.net/users
-echo ' - Reboot system
+echo '   \ https://portswigger.net/users'
+echo ' - Reboot system'
 echo ''
 echo ''
