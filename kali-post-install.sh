@@ -92,8 +92,8 @@ echo 'set -e' >> /usr/local/bin/nikto-dev
 echo 'exec /opt/nikto/program/nikto.pl "$@"' >> /usr/local/bin/nikto-dev
 chmod +x /usr/local/bin/nikto-dev
 
-# lgandx/Responder
-printf "${BLUE}[*] Installing Nikto bleeding edge ...${NC}\n"
+# lgandx/Responder bleeding edge
+printf "${BLUE}[*] Installing responder bleeding edge ...${NC}\n"
 cd /opt
 git clone https://github.com/lgandx/Responder.git
 echo '#!/bin/bash' >> /usr/local/bin/responder-dev
