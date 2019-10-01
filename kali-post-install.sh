@@ -43,7 +43,7 @@ printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
 
 # CME stable
 printf "${BLUE}[*] Installing CME stable ...${NC}\n"
-apt-get install crackmapexec
+apt-get -y install crackmapexec
 
 # CME bleeding edge
 printf "${BLUE}[*] Installing CME bleeding edge ...${NC}\n"
