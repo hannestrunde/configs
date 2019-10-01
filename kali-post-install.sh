@@ -74,6 +74,10 @@ apt-get -y install bloodhound
 printf "${BLUE}[*] Downloading Empire ...${NC}\n"
 cd /opt
 git clone https://github.com/EmpireProject/Empire.git
+echo '#!/bin/bash' >> /usr/local/bin/empire
+echo '' >> /usr/local/bin/empire
+echo 'cd /opt/Empire/ && ./empire "$@"' >> /usr/local/bin/empire
+chmod +x /usr/local/bin/empire
 
 # EyeWitness Docker
 printf "${BLUE}[*] Installing EyeWitness Docker container ...${NC}\n"
