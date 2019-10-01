@@ -7,7 +7,7 @@ NC='\033[0m' # No Color
 ## Basic pkgs
 printf "${BLUE}[+] Installing basic pkgs ...${NC}\n"
 sudo apt-get update
-sudo apt-get -y install apt-transport-https
+sudo apt-get -y install apt-transport-https golang
 sudo apt-get update
 
 # Virtualenvwrapper
