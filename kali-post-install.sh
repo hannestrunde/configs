@@ -54,7 +54,6 @@ git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec
 cd CrackMapExec
 python setup.py install
 deactivate
-cd /opt
 
 # Impacket bleeding edge
 printf "${BLUE}[*] Installing impacket bleeding edge ...${NC}\n"
