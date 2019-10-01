@@ -105,7 +105,6 @@ chmod +x /usr/local/bin/responder-dev
 # Other
 printf "${BLUE}[*] Installing gobuster ...${NC}"
 go get github.com/OJ/gobuster
-ln -s ~/go/bin
 
 printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
 
