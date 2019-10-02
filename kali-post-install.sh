@@ -111,9 +111,16 @@ echo '' >> /usr/local/bin/responder-dev
 echo 'cd /opt/Responder/ && ./Responder.py "$@"' >> /usr/local/bin/responder-dev
 chmod +x /usr/local/bin/responder-dev
 
-# Other
+# gobuster
 printf "${BLUE}[*] Installing gobuster ...${NC}"
 go get github.com/OJ/gobuster
+
+# windapsearch
+printf "${BLUE}[*] Installing windapsearch ...${NC}"
+apt-get -y install python-ldap
+cd /opt
+git clone https://github.com/ropnop/windapsearch.git
+ln -s /opt/windapsearch/windapsearch.py /usr/local/bin/windapsearch
 
 ## Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
