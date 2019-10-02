@@ -115,6 +115,15 @@ chmod +x /usr/local/bin/responder-dev
 printf "${BLUE}[*] Installing gobuster ...${NC}"
 go get github.com/OJ/gobuster
 
+## Configuration stuff
+printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
+
+# Disable rpcbind.socket (listening on 0.0.0.0:111)
+printf "${BLUE}[*] Trying to disable rpcbind.socket ...${NC}"
+systemctl stop rpcbind.socket
+systemctl disable rpcbind.socket
+
+## What is left to do manually?
 printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
 
 printf ' - Change neo4j DB password\n'
