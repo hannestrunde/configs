@@ -134,6 +134,15 @@ chmod +x getTGT_linux_x86_64
 ln -s /opt/impacket-static-binaries/GetUserSPNs_linux_x86_64 /usr/local/bin/getuserspns
 ln -s /opt/impacket-static-binaries/getTGT_linux_x86_64 /usr/local/bin/gettgt
 
+# kerbrute
+printf "${BLUE}[*] Downloading @ropnop's latest kerbrute release ...${NC}"
+cd /opt
+mkdir kerbrute
+cd kerbrute
+wget 'https://github.com/ropnop/kerbrute/releases/latest/download/kerbrute_linux_amd64'
+chmod +x kerbrute_linux_amd64
+ln -s /opt/kerbrute/kerbrute_linux_amd64 /usr/local/bin/kerbrute
+
 ## Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
 
