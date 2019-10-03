@@ -122,6 +122,18 @@ cd /opt
 git clone https://github.com/ropnop/windapsearch.git
 ln -s /opt/windapsearch/windapsearch.py /usr/local/bin/windapsearch
 
+# impacket static binaries
+printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}"
+cd /opt
+mkdir impacket-static-binaries
+cd impacket-static-binaries
+wget 'https://github.com/ropnop/impacket_static_binaries/releases/latest/download/GetUserSPNs_linux_x86_64'
+wget 'https://github.com/ropnop/impacket_static_binaries/releases/latest/download/getTGT_linux_x86_64'
+chmod +x GetUserSPNs_linux_x86_64
+chmod +x getTGT_linux_x86_64
+ln -s /opt/impacket-static-binaries/GetUserSPNs_linux_x86_64 /usr/local/bin/getuserspns
+ln -s /opt/impacket-static-binaries/getTGT_linux_x86_64 /usr/local/bin/gettgt
+
 ## Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
 
