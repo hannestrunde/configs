@@ -80,17 +80,26 @@ apt-get -y install bloodhound
 printf "${BLUE}[*] Downloading Empire ...${NC}\n"
 cd /opt
 git clone https://github.com/EmpireProject/Empire.git
-echo '#!/bin/bash' >> /usr/local/bin/empire
-echo '' >> /usr/local/bin/empire
+echo '#!/bin/bash' > /usr/local/bin/empire
 echo 'cd /opt/Empire/ && ./empire "$@"' >> /usr/local/bin/empire
 chmod +x /usr/local/bin/empire
 
 # EyeWitness Docker image
-printf "${BLUE}[*] Installing EyeWitness Docker container ...${NC}\n"
+#printf "${BLUE}[*] Installing EyeWitness Docker container ...${NC}\n"
+#cd /opt
+#git clone https://github.com/FortyNorthSecurity/EyeWitness.git
+#cd EyeWitness
+#docker build --tag eyewitness .
+
+# EyeWitness Docker image
+printf "${BLUE}[*] Installing EyeWitness ...${NC}\n"
 cd /opt
-git clone https://github.com/FortyNorthSecurity/EyeWitness.git
-cd EyeWitness
-docker build --tag eyewitness .
+git clone https://github.com/ChrisTruncer/EyeWitness.git
+cd EyeWitness/setup
+./setup.sh
+echo '#!/bin/bash' > /usr/local/bin/eyewitness
+echo 'cd /opt/EyeWitness/ && ./EyeWitness.py "$@"' >> /usr/local/bin/eyewitness
+chmod +x /usr/local/bin/eyewitness
 
 # Nikto Docker image
 printf "${BLUE}[*] Installing Nikto Docker container ...${NC}\n"
@@ -113,8 +122,7 @@ docker build -t sullo/nikto .
 printf "${BLUE}[*] Installing responder bleeding edge ...${NC}\n"
 cd /opt
 git clone https://github.com/lgandx/Responder.git
-echo '#!/bin/bash' >> /usr/local/bin/responder-dev
-echo '' >> /usr/local/bin/responder-dev
+echo '#!/bin/bash' > /usr/local/bin/responder-dev
 echo 'cd /opt/Responder/ && ./Responder.py "$@"' >> /usr/local/bin/responder-dev
 chmod +x /usr/local/bin/responder-dev
 
