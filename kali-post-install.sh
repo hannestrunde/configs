@@ -85,22 +85,29 @@ echo '' >> /usr/local/bin/empire
 echo 'cd /opt/Empire/ && ./empire "$@"' >> /usr/local/bin/empire
 chmod +x /usr/local/bin/empire
 
-# EyeWitness Docker
+# EyeWitness Docker image
 printf "${BLUE}[*] Installing EyeWitness Docker container ...${NC}\n"
 cd /opt
 git clone https://github.com/FortyNorthSecurity/EyeWitness.git
 cd EyeWitness
-docker build --build-arg user=$USER --tag eyewitness .
+docker build --tag eyewitness .
 
-# Nikto bleeding Edge
-printf "${BLUE}[*] Installing Nikto bleeding edge ...${NC}\n"
+# Nikto Docker image
+printf "${BLUE}[*] Installing Nikto Docker container ...${NC}\n"
 cd /opt
 git clone https://github.com/sullo/nikto.git
-echo '#!/bin/sh' >> /usr/local/bin/nikto-dev
-echo ''
-echo 'set -e' >> /usr/local/bin/nikto-dev
-echo 'exec /opt/nikto/program/nikto.pl "$@"' >> /usr/local/bin/nikto-dev
-chmod +x /usr/local/bin/nikto-dev
+cd nikto
+docker build -t sullo/nikto .
+
+# Nikto bleeding Edge
+#printf "${BLUE}[*] Installing Nikto bleeding edge ...${NC}\n"
+#cd /opt
+#git clone https://github.com/sullo/nikto.git
+#echo '#!/bin/sh' >> /usr/local/bin/nikto-dev
+#echo ''
+#echo 'set -e' >> /usr/local/bin/nikto-dev
+#echo 'exec /opt/nikto/program/nikto.pl "$@"' >> /usr/local/bin/nikto-dev
+#chmod +x /usr/local/bin/nikto-dev
 
 # lgandx/Responder bleeding edge
 printf "${BLUE}[*] Installing responder bleeding edge ...${NC}\n"
