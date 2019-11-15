@@ -15,7 +15,7 @@ printf "${BLUE}[+] Installing basic pkgs ...${NC}\n"
 sudo apt-get update
 sudo apt-get -y install apt-transport-https golang
 sudo apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
-sudo apt-get -y install proxychains
+sudo apt-get -y install proxychains wireshark
 sudo apt-get update
 
 # Set up go environment
