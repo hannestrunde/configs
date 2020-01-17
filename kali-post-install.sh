@@ -68,12 +68,14 @@ install_adidnsdump () {
 install_powerhub () {
     printf "${BLUE}[*] Installing PowerHub ...${NC}\n"
     cd /opt
+    mkvirtualenv powerhub
     git clone https://github.com/AdrianVollmer/PowerHub
     cd PowerHub
     pip3 install -r requirements.txt
     echo '#!/bin/bash' > /usr/local/bin/powerhub
     echo 'cd /opt/PowerHub/ && python3 powerhub.py "$@"' >> /usr/local/bin/powerhub
     chmod +x /usr/local/bin/powerhub
+    deactivate
 }
 
 install_pypykatz () {
@@ -112,6 +114,7 @@ install_cme_bleeding_edge () {
     python3.7 -m pip install lsassy
     cd cme/modules
     wget https://raw.githubusercontent.com/Hackndo/lsassy/master/cme/lsassy.py
+    cd /opt/CrackMapExec
     python setup.py install
     deactivate
 }
@@ -252,19 +255,19 @@ read -p "Press any key to proceed or Strg+C to cancel ..." x
 
 # Install basic stuff and prerequisites
 printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
-install_basic_packages
+#install_basic_packages
 #setup_go_env
-install_virtualenvwrapper
+#install_virtualenvwrapper
 #install_docker
 
 # Install pentest stuff
 printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
-install_mitm6
-install_sqlplus
-install_adidnsdump
+#install_mitm6
+#install_sqlplus
+#install_adidnsdump
 install_powerhub
-install_pypykatz
-install_silenttrinity
+#install_pypykatz
+#install_silenttrinity
 #install_cme_stable
 install_cme_bleeding_edge
 # install_impacket_bleeding_edge
@@ -281,7 +284,7 @@ install_cme_bleeding_edge
 # Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
 #disable_rpcbind
-configure_tmux
+#configure_tmux
 
 ## What is left to do manually?
 
