@@ -2,7 +2,7 @@
 # Constans
 
 install_basic_packages () {
-    printf "${BLUE}[+] Installing basic pkgs ...${NC}\n"
+    printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
     sudo apt-get update
     sudo apt-get -y install apt-transport-https golang
     sudo apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
@@ -11,7 +11,7 @@ install_basic_packages () {
 }
 
 setup_go_env () {
-    printf "${BLUE}[+] Setting up go environment ...${NC}\n"
+    printf "${BLUE}[*] Setting up go environment ...${NC}\n"
     echo '' >> ~/.bashrc
     echo '# Initialize go' >> ~/.bashrc
     echo 'export GOPATH=$HOME/go' >> ~/.bashrc
@@ -20,7 +20,7 @@ setup_go_env () {
 }
 
 install_virtualenvwrapper () {
-    printf "${BLUE}[+] Installing virtualenvwrapper ...${NC}\n"
+    printf "${BLUE}[*] Installing virtualenvwrapper ...${NC}\n"
     pip install virtualenvwrapper
     echo '' >> ~/.bashrc
     echo '# Initialize virtualenvwrapper' >> ~/.bashrc
@@ -31,7 +31,7 @@ install_virtualenvwrapper () {
 }
 
 install_docker () {
-    printf "${BLUE}[+] Installing docker ...${NC}\n"
+    printf "${BLUE}[*] Installing docker ...${NC}\n"
     apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
@@ -42,6 +42,7 @@ install_docker () {
 }
 
 install_mitm6 () {
+    printf "${BLUE}[*] Installing mitm6 ...${NC}\n"
     pip3 install mitm6
 }
 
@@ -253,7 +254,7 @@ read -p "Press any key to proceed or Strg+C to cancel ..." x
 printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
 install_basic_packages
 #setup_go_env
-install_virtualenvwrapper ()
+install_virtualenvwrapper
 #install_docker
 
 # Install pentest stuff
