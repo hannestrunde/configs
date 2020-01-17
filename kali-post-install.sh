@@ -281,7 +281,6 @@ install_cme_stable
 install_cme_bleeding_edge
 install_impacket_bleeding_edge
 install_bloodhound
-install_empire
 install_eyewitness
 install_nikto_docker
 install_responder_bleeding_edge
@@ -289,6 +288,9 @@ install_gobuster
 install_windapsearch
 install_impacket_static_binaries
 install_kerbrute
+
+## Outdated
+#install_empire
 
 ## Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
@@ -303,7 +305,7 @@ printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
 printf ' - Change neo4j DB password\n'
 printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/\n\n'
 
-printf ' - Finish installing Empire\n'
-printf '   cd /opt/Empire && bash setup/install.sh\n\n'
+#printf ' - Finish installing Empire\n'
+#printf '   cd /opt/Empire && bash setup/install.sh\n\n'
 
 printf ' - Reboot system\n\n'
