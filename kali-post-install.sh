@@ -242,49 +242,49 @@ configure_tmux () {
 
 ################ MAIN SECTION ###############
 
-# Color Coding
+## Color Coding
 BLUE='\033[1;34m'
 YELLOW='\033[1;33m'
 RED='\033[1;31m'
 NC='\033[0m' # No Color
 
-# Print usage warning
+## Print usage warning
 printf "[!] Make sure to run the script with '${RED}. kali-post-install.sh${NC}' instead of 'sh ./kali-post-install.sh!\n"
 printf "[!] If you ignore this warning, stuff will likely break!\n"
 read -p "Press any key to proceed or Strg+C to cancel ..." x
 
-# Install basic stuff and prerequisites
+## Install basic stuff and prerequisites
 printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
-#install_basic_packages
-#setup_go_env
-#install_virtualenvwrapper
-#install_docker
+install_basic_packages
+setup_go_env
+install_virtualenvwrapper
+install_docker
 
-# Install pentest stuff
+## Install pentest stuff
 printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
-#install_mitm6
-#install_sqlplus
-#install_adidnsdump
+install_mitm6
+install_sqlplus
+install_adidnsdump
 install_powerhub
-#install_pypykatz
-#install_silenttrinity
-#install_cme_stable
+install_pypykatz
+install_silenttrinity
+install_cme_stable
 install_cme_bleeding_edge
-# install_impacket_bleeding_edge
-# install_bloodhound
-# install_empire
-# install_eyewitness
-# install_nikto_docker
-# install_responder_bleeding_edge
-# install_gobuster
-# install_windapsearch
-# install_impacket_static_binaries
-# install_kerbrute
+install_impacket_bleeding_edge
+install_bloodhound
+install_empire
+install_eyewitness
+install_nikto_docker
+install_responder_bleeding_edge
+install_gobuster
+install_windapsearch
+install_impacket_static_binaries
+install_kerbrute
 
-# Configuration stuff
+## Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
-#disable_rpcbind
-#configure_tmux
+disable_rpcbind
+configure_tmux
 
 ## What is left to do manually?
 
