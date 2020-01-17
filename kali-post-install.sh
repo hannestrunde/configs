@@ -95,7 +95,7 @@ install_silenttrinity () {
     unzip st-ubuntu-latest.zip
     cd st-ubuntu-latest
     chmod +x st
-    ln -s /opt/silenttrinity/st-ubuntu-latest/st /usr/local/bin/silenttrinity
+    ln -s /opt/silenttrinity/st-ubuntu-latest/st /usr/local/bin/st
 }
 
 install_cme_stable () {
