@@ -3,11 +3,14 @@
 
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
-    sudo apt-get update
-    sudo apt-get -y install apt-transport-https golang
-    sudo apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
-    sudo apt-get -y install proxychains wireshark
-    sudo apt-get update
+    apt-get -y install apt-transport-https golang
+    apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
+    apt-get -y install proxychains wireshark
+}
+
+install_open_vm_tools () {
+    printf "${BLUE}[*] Installing open-vm-tools ...${NC}\n"
+    apt-get -y libfuse-dev open-vm-tools-desktop fuse
 }
 
 setup_go_env () {
@@ -35,7 +38,6 @@ install_docker () {
     apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
-    apt-get update
     apt-get remove docker docker-engine docker.io
     apt-get -y install docker-ce
     systemctl enable docker
@@ -240,6 +242,11 @@ configure_tmux () {
     wget https://raw.githubusercontent.com/cyberfreaq/configs/master/.tmux.conf
 }
 
+configure_time () {
+    apt-get -y install ntpdate
+    ntpdate de.pool.ntp.org
+}
+
 ################ MAIN SECTION ###############
 
 ## Color Coding
@@ -255,7 +262,9 @@ read -p "Press any key to proceed or Strg+C to cancel ..." x
 
 ## Install basic stuff and prerequisites
 printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
+apt-get update
 install_basic_packages
+install_open_vm_tools
 setup_go_env
 install_virtualenvwrapper
 install_docker
@@ -285,6 +294,7 @@ install_kerbrute
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
 disable_rpcbind
 configure_tmux
+configure_time
 
 ## What is left to do manually?
 
