@@ -12,6 +12,16 @@ install_open_vm_tools () {
     sudo apt-get -y install libfuse-dev open-vm-tools-desktop fuse
 }
 
+setup_my_env () {
+    printf "${BLUE}[*] Setting up my app environment ...${NC}\n"
+    mkdir -p ~/.myapps/bin
+    MY_BIN_PATH="$HOME/.myapps/bin"
+    echo '' >> ~/.bashrc
+    echo '# Initialize my app environment' >> ~/.bashrc
+    echo 'export PATH="$PATH:'"$MY_BIN_PATH"'"' >> ~/.bashrc
+    . ~/.bashrc  
+}
+
 setup_go_env () {
     printf "${BLUE}[*] Setting up go environment ...${NC}\n"
     echo '' >> ~/.bashrc
@@ -21,14 +31,23 @@ setup_go_env () {
     . ~/.bashrc
 }
 
+setup_python_env () {
+    printf "${BLUE}[*] Setting up python user environment ...${NC}\n"
+    PYTHON_BIN_PATH="$(python -m site --user-base)/bin"
+    echo '' >> ~/.bashrc
+    echo '# Initialize python user environment' >> ~/.bashrc  
+    echo 'export PATH="$PATH:'"$PYTHON_BIN_PATH"'"' >> ~/.bashrc
+    . ~/.bashrc
+}
+
 install_virtualenvwrapper () {
     printf "${BLUE}[*] Installing virtualenvwrapper ...${NC}\n"
-    sudo pip install virtualenvwrapper
+    pip install --user virtualenvwrapper
     echo '' >> ~/.bashrc
     echo '# Initialize virtualenvwrapper' >> ~/.bashrc
     echo 'export WORKON_HOME=$HOME/.virtualenvs' >> ~/.bashrc
     echo 'export PROJECT_HOME=$HOME/Devel' >> ~/.bashrc
-    echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
+    echo 'source $HOME/.local/bin/virtualenvwrapper.sh' >> ~/.bashrc
     . ~/.bashrc
 }
 
@@ -45,7 +64,8 @@ install_docker () {
 
 install_mitm6 () {
     printf "${BLUE}[*] Installing mitm6 ...${NC}\n"
-    sudo pip3 install mitm6
+    # pip user install not possible; mitm6 needs root to run
+    pip3 install mitm6
 }
 
 install_sqlplus () {
@@ -79,20 +99,20 @@ install_adidnsdump () {
 
 install_powerhub () {
     printf "${BLUE}[*] Installing PowerHub ...${NC}\n"
-    cd /opt
+    cd ~/.myapps
     mkvirtualenv powerhub
-    sudo git clone https://github.com/AdrianVollmer/PowerHub
+    git clone https://github.com/AdrianVollmer/PowerHub
     cd PowerHub
-    sudo pip3 install -r requirements.txt
-    echo '#!/bin/bash' | sudo tee /usr/local/bin/powerhub > /dev/null
-    echo 'cd /opt/PowerHub/ && python3 powerhub.py "$@"' | sudo tee -a /usr/local/bin/powerhub > /dev/null
-    sudo chmod +x /usr/local/bin/powerhub
+    pip3 install --user -r requirements.txt
+    echo '#!/bin/bash' > $HOME/.myapps/bin/powerhub
+    echo 'cd $HOME/.myapps/PowerHub/ && python3 powerhub.py "$@"' >> $HOME/.myapps/bin/powerhub
+    chmod +x $HOME/.myapps/bin/powerhub
     deactivate
 }
 
 install_pypykatz () {
     printf "${BLUE}[*] Installing pypykatz ...${NC}\n"
-    sudo pip3 install pypykatz
+    pip3 install --user pypykatz
 }
 
 # Note: Download link needs to be changed regularly as there is no permalink available
@@ -138,6 +158,7 @@ install_impacket_bleeding_edge () {
     mkvirtualenv impacket
     sudo git clone https://github.com/SecureAuthCorp/impacket
     cd impacket
+    # pip user install not possible; most impacket tools need root to run
     sudo pip install -r requirements.txt
     sudo python setup.py build
     sudo python setup.py install
@@ -210,10 +231,13 @@ install_gobuster () {
 
 install_windapsearch () {
     printf "${BLUE}[*] Installing windapsearch ...${NC}\n"
-    sudo apt-get -y install python-ldap
+    mkvirtualenv windapsearch
+    sudo apt-get -y install libsasl2-dev python-dev libldap2-dev libssl-dev
+    pip install python-ldap
     cd /opt
     sudo git clone https://github.com/ropnop/windapsearch.git
     sudo ln -s /opt/windapsearch/windapsearch.py /usr/local/bin/windapsearch
+    deactivate
 }
 
 install_impacket_static_binaries () {
@@ -275,7 +299,9 @@ printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
 sudo apt-get update
 install_basic_packages
 install_open_vm_tools
+setup_my_env
 setup_go_env
+setup_python_env
 install_virtualenvwrapper
 install_docker
 
