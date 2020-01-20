@@ -1,16 +1,15 @@
 #!/bin/bash
-# Constans
 
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
-    sudo apt-get -y install apt-transport-https golang
+    sudo apt-get -y install apt-transport-https golang dialog apt-utils
     sudo apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
     sudo apt-get -y install proxychains wireshark
 }
 
 install_open_vm_tools () {
     printf "${BLUE}[*] Installing open-vm-tools ...${NC}\n"
-    sudo apt-get -y libfuse-dev open-vm-tools-desktop fuse
+    sudo apt-get -y install libfuse-dev open-vm-tools-desktop fuse
 }
 
 setup_go_env () {
@@ -38,6 +37,7 @@ install_docker () {
     sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
     sudo apt-get remove docker docker-engine docker.io
     sudo apt-get -y install docker-ce
     sudo systemctl enable docker
@@ -65,7 +65,15 @@ install_sqlplus () {
 install_adidnsdump () {
     printf "${BLUE}[*] Installing adidnsdump ...${NC}\n"
     mkvirtualenv adidnsdump
-    sudo pip install git+https://github.com/dirkjanm/adidnsdump#egg=adidnsdump
+    mkdir ~/adipy3
+    cd ~/adipy3
+    git clone https://github.com/SecureAuthCorp/impacket.git
+    cd impacket
+    pip install .
+    cd ~/adipy3
+    git clone https://github.com/dirkjanm/adidnsdump
+    cd adidnsdump
+    pip install .
     deactivate
 }
 
@@ -290,8 +298,6 @@ install_gobuster
 install_windapsearch
 install_impacket_static_binaries
 install_kerbrute
-
-
 
 ## Configuration stuff
 printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
