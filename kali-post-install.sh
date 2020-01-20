@@ -37,7 +37,7 @@ install_docker () {
     printf "${BLUE}[*] Installing docker ...${NC}\n"
     sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
+    echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt-get remove docker docker-engine docker.io
     sudo apt-get -y install docker-ce
     sudo systemctl enable docker
@@ -64,7 +64,9 @@ install_sqlplus () {
 
 install_adidnsdump () {
     printf "${BLUE}[*] Installing adidnsdump ...${NC}\n"
+    mkvirtualenv adidnsdump
     sudo pip install git+https://github.com/dirkjanm/adidnsdump#egg=adidnsdump
+    deactivate
 }
 
 install_powerhub () {
@@ -194,12 +196,12 @@ install_responder_bleeding_edge () {
 }
 
 install_gobuster () {
-    printf "${BLUE}[*] Installing gobuster ...${NC}"
+    printf "${BLUE}[*] Installing gobuster ...${NC}\n"
     go get github.com/OJ/gobuster
 }
 
 install_windapsearch () {
-    printf "${BLUE}[*] Installing windapsearch ...${NC}"
+    printf "${BLUE}[*] Installing windapsearch ...${NC}\n"
     sudo apt-get -y install python-ldap
     cd /opt
     sudo git clone https://github.com/ropnop/windapsearch.git
@@ -207,7 +209,7 @@ install_windapsearch () {
 }
 
 install_impacket_static_binaries () {
-    printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}"
+    printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}\n"
     cd /opt
     sudo mkdir impacket-static-binaries
     cd impacket-static-binaries
@@ -220,7 +222,7 @@ install_impacket_static_binaries () {
 }
 
 install_kerbrute () {
-    printf "${BLUE}[*] Downloading @ropnop's latest kerbrute release ...${NC}"
+    printf "${BLUE}[*] Downloading @ropnop's latest kerbrute release ...${NC}\n"
     cd /opt
     sudo mkdir kerbrute
     cd kerbrute
@@ -231,13 +233,13 @@ install_kerbrute () {
 
 # Disable rpcbind.socket (listening on 0.0.0.0:111)
 disable_rpcbind () {
-    printf "${BLUE}[*] Trying to disable rpcbind.socket ...${NC}"
+    printf "${BLUE}[*] Trying to disable rpcbind.socket ...${NC}\n"
     sudo systemctl stop rpcbind.socket
     sudo systemctl disable rpcbind.socket
 }
 
 configure_tmux () {
-    printf "${BLUE}[*] Downloading tmux.conf ...${NC}"
+    printf "${BLUE}[*] Downloading tmux.conf ...${NC}\n"
     cd ~
     wget https://raw.githubusercontent.com/cyberfreaq/configs/master/.tmux.conf
 }
@@ -262,7 +264,7 @@ read -p "Press any key to proceed or Strg+C to cancel ..." x
 
 ## Install basic stuff and prerequisites
 printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
-apt-get update
+sudo apt-get update
 install_basic_packages
 install_open_vm_tools
 setup_go_env
