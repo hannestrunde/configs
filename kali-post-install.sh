@@ -2,7 +2,7 @@
 
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
-    sudo apt-get -y install apt-transport-https golang dialog apt-utils
+    sudo apt-get -y install apt-transport-https golang
     sudo apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
     sudo apt-get -y install proxychains wireshark
 }
