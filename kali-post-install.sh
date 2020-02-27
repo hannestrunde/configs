@@ -2,20 +2,20 @@
 
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
-    sudo apt-get -y install apt-transport-https golang
-    sudo apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
-    sudo apt-get -y install proxychains wireshark
+    sudo apt -y install apt-transport-https golang
+    sudo apt -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
+    sudo apt -y install proxychains wireshark
 }
 
 install_open_vm_tools () {
     printf "${BLUE}[*] Installing open-vm-tools ...${NC}\n"
-    sudo apt-get -y install libfuse-dev open-vm-tools-desktop fuse
+    sudo apt -y install libfuse-dev open-vm-tools-desktop fuse
 }
 
 setup_my_env () {
     printf "${BLUE}[*] Setting up my app environment ...${NC}\n"
     mkdir -p ~/.myapps/bin
-    MY_BIN_PATH="$HOME/.myapps/bin"
+    MY_BIN_PATH="$HOME/tools/bin"
     echo '' >> ~/.bashrc
     echo '# Initialize my app environment' >> ~/.bashrc
     echo 'export PATH="$PATH:'"$MY_BIN_PATH"'"' >> ~/.bashrc
@@ -53,12 +53,12 @@ install_virtualenvwrapper () {
 
 install_docker () {
     printf "${BLUE}[*] Installing docker ...${NC}\n"
-    sudo apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+    sudo apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    sudo apt-get update
-    sudo apt-get remove docker docker-engine docker.io
-    sudo apt-get -y install docker-ce
+    sudo apt update
+    sudo apt remove docker docker-engine docker.io
+    sudo apt -y install docker-ce
     sudo systemctl enable docker
 }
 
@@ -74,7 +74,7 @@ install_sqlplus () {
     wget https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
     wget https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-devel-linuxx64.rpm
     wget https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-sqlplus-linuxx64.rpm
-    sudo apt-get -y install alien libaio1
+    sudo apt -y install alien libaio1
     sudo alien -i oracle-instantclient-basic-*.rpm
     sudo alien -i oracle-instantclient-devel-*.rpm
     sudo alien -i oracle-instantclient-sqlplus-*.rpm
@@ -130,13 +130,13 @@ install_silenttrinity () {
 
 install_cme_stable () {
     printf "${BLUE}[*] Installing CME stable ...${NC}\n"
-    sudo apt-get -y install crackmapexec
+    sudo apt -y install crackmapexec
 }
 
 # CME bleeding edge + lsassy
 install_cme_bleeding_edge () {
     printf "${BLUE}[*] Installing CME bleeding edge and lsassy ...${NC}\n"
-    sudo apt-get install -y libssl-dev libffi-dev python-dev build-essential
+    sudo apt install -y libssl-dev libffi-dev python-dev build-essential
     cd /opt
     mkvirtualenv cme
     sudo git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec
@@ -167,7 +167,7 @@ install_impacket_bleeding_edge () {
 
 install_bloodhound () {
     printf "${BLUE}[*] Installing bloodhound ...${NC}\n"
-    sudo apt-get -y install bloodhound
+    sudo apt -y install bloodhound
 }
 
 install_empire () {
@@ -177,6 +177,12 @@ install_empire () {
     echo '#!/bin/bash' | sudo tee /usr/local/bin/empire > /dev/null
     echo 'cd /opt/Empire/ && ./empire "$@"' | sudo tee -a /usr/local/bin/empire > /dev/null
     sudo chmod +x /usr/local/bin/empire
+}
+
+install_empire_3.0 () {
+    printf "${BLUE}[*] Installing Empire 3.0 docker container (~ 1 GB in size) ...${NC}\n"
+    sudo docker pull bcsecurity/empire:latest
+    sudo docker create -v empirevol:/empire --name data bcsecurity/empire:latest
 }
 
 # EyeWitness Docker image
@@ -232,7 +238,7 @@ install_gobuster () {
 install_windapsearch () {
     printf "${BLUE}[*] Installing windapsearch ...${NC}\n"
     mkvirtualenv windapsearch
-    sudo apt-get -y install libsasl2-dev python-dev libldap2-dev libssl-dev
+    sudo apt -y install libsasl2-dev python-dev libldap2-dev libssl-dev
     pip install python-ldap
     cd /opt
     sudo git clone https://github.com/ropnop/windapsearch.git
@@ -277,7 +283,7 @@ configure_tmux () {
 }
 
 configure_time () {
-    sudo apt-get -y install ntpdate
+    sudo apt -y install ntpdate
     sudo ntpdate de.pool.ntp.org
 }
 
@@ -317,6 +323,7 @@ install_cme_stable
 install_cme_bleeding_edge
 install_impacket_bleeding_edge
 install_bloodhound
+#install_empire_3.0
 install_eyewitness
 install_nikto_docker
 install_responder_bleeding_edge
