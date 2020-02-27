@@ -182,7 +182,7 @@ install_empire () {
 install_empire_3.0 () {
     printf "${BLUE}[*] Installing Empire 3.0 docker container (~ 1 GB in size) ...${NC}\n"
     sudo docker pull bcsecurity/empire:latest
-    sudo docker create -v empirevol:/empire --name data bcsecurity/empire:latest
+    sudo docker create -v empirevol:/empire --name empire bcsecurity/empire:latest
 }
 
 # EyeWitness Docker image
