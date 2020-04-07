@@ -1,0 +1,43 @@
+### Privacy Tweaks ###
+DisableTelemetry
+DisableWiFiSense
+DisableAppSuggestions
+DisableActivityHistory
+DisableLocation
+DisableMapUpdates
+DisableFeedback
+DisableTailoredExperiences
+DisableAdvertisingID
+DisableWebLangList
+DisableCortana
+DisableDiagTrack
+DisableWAPPush
+
+### Security Tweaks ###
+ShowDefenderTrayIcon
+HideAccountProtectionWarn
+
+### Network Tweaks ###
+DisableSMB1
+DisableNetBIOS              # Disable NetBIOS over TCP/IP on all currently installed network interfaces
+DisableLLMNR
+DisableIPv6                 # Disable IPv6 stack for all installed network interfaces
+
+### Service Tweaks ###
+EnableUpdateMSProducts
+
+### UI Tweaks ###
+HideTaskbarSearch
+ShowTrayIcons               # Show all tray icons 
+DisableShortcutInName
+
+### Explorer UI Tweaks ###
+ShowKnownExtensions
+ShowHiddenFiles
+SetExplorerThisPC
+
+### Application Tweaks ###
+UninstallOneDrive           # Not applicable to Server
+UninstallMsftBloat
+UninstallThirdPartyBloat
+DisableXboxFeatures         # Not applicable to Server
