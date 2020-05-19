@@ -1,19 +1,19 @@
 #!/bin/bash
 
 install_basic_packages () {
-    printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
+    printf "${BLUE}[*] Installing basic pkgs (root) ...${NC}\n"
     sudo apt -y install apt-transport-https golang
     sudo apt -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
     sudo apt -y install proxychains wireshark
 }
 
 install_open_vm_tools () {
-    printf "${BLUE}[*] Installing open-vm-tools ...${NC}\n"
+    printf "${BLUE}[*] Installing open-vm-tools (root) ...${NC}\n"
     sudo apt -y install libfuse-dev open-vm-tools-desktop fuse
 }
 
 setup_my_env () {
-    printf "${BLUE}[*] Setting up my app environment ...${NC}\n"
+    printf "${BLUE}[*] Setting up my app environment (non-root) ...${NC}\n"
     mkdir -p ~/.myapps/bin
     MY_BIN_PATH="$HOME/tools/bin"
     echo '' >> ~/.bashrc
@@ -23,7 +23,7 @@ setup_my_env () {
 }
 
 setup_go_env () {
-    printf "${BLUE}[*] Setting up go environment ...${NC}\n"
+    printf "${BLUE}[*] Setting up go environment (non-root) ...${NC}\n"
     echo '' >> ~/.bashrc
     echo '# Initialize go' >> ~/.bashrc
     echo 'export GOPATH=$HOME/go' >> ~/.bashrc
@@ -32,7 +32,7 @@ setup_go_env () {
 }
 
 setup_python_env () {
-    printf "${BLUE}[*] Setting up python user environment ...${NC}\n"
+    printf "${BLUE}[*] Setting up python user environment (non-root) ...${NC}\n"
     PYTHON_BIN_PATH="$(python -m site --user-base)/bin"
     echo '' >> ~/.bashrc
     echo '# Initialize python user environment' >> ~/.bashrc  
@@ -52,7 +52,7 @@ install_virtualenvwrapper () {
 }
 
 install_docker () {
-    printf "${BLUE}[*] Installing docker ...${NC}\n"
+    printf "${BLUE}[*] Installing docker (root) ...${NC}\n"
     sudo apt -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
     echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -186,11 +186,11 @@ install_empire_3.0 () {
 }
 
 # EyeWitness Docker image
-#printf "${BLUE}[*] Installing EyeWitness Docker container ...${NC}\n"
-#cd /opt
-#git clone https://github.com/FortyNorthSecurity/EyeWitness.git
-#cd EyeWitness
-#docker build --tag eyewitness .
+    printf "${BLUE}[*] Installing EyeWitness Docker container (non-root) ...${NC}\n"
+    cd ~/.myapps
+    git clone https://github.com/FortyNorthSecurity/EyeWitness.git
+    cd EyeWitness/Python
+    docker build --tag eyewitness .
 
 install_eyewitness () {
     printf "${BLUE}[*] Installing EyeWitness ...${NC}\n"
