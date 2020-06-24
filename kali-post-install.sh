@@ -235,6 +235,11 @@ install_gobuster () {
     go get github.com/OJ/gobuster
 }
 
+install_ffuf () {
+    printf "${BLUE}[*] Installing ffuf (non-root install and usage) ...${NC}\n"
+    go get github.com/ffuf/ffuf
+}
+
 install_windapsearch () {
     printf "${BLUE}[*] Installing windapsearch ...${NC}\n"
     mkvirtualenv windapsearch
@@ -328,6 +333,7 @@ install_eyewitness
 install_nikto_docker
 install_responder_bleeding_edge
 install_gobuster
+install_ffuf
 install_windapsearch
 install_impacket_static_binaries
 install_kerbrute
