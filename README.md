@@ -4,6 +4,6 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 
 # Todo
 ## kali-post-install.sh
-- add https://github.com/CiscoCXSecurity/rdp-sec-check
+- [ ] Add https://github.com/CiscoCXSecurity/rdp-sec-check
 
 
