@@ -84,40 +84,9 @@ install_pypykatz () {
     pip3 install pypykatz
 }
 
-# Note: Download link needs to be changed regularly as there is no permalink available
-install_silenttrinity () {
-    printf "${BLUE}[*] Downloading latest SILENTTRINITY binary from byt3bl33d3r:master ...${NC}\n"
-    cd /opt
-    mkdir silenttrinity
-    cd silenttrinity
-    wget 'https://github.com/byt3bl33d3r/SILENTTRINITY/suites/283795555/artifacts/191398' -O st-ubuntu-latest.zip
-    unzip st-ubuntu-latest.zip
-    cd st-ubuntu-latest
-    chmod +x st
-    ln -s /opt/silenttrinity/st-ubuntu-latest/st /usr/local/bin/st
-}
-
 install_cme_stable () {
     printf "${BLUE}[*] Installing CME stable ...${NC}\n"
     apt-get -y install crackmapexec
-}
-
-# CME bleeding edge + lsassy
-install_cme_bleeding_edge () {
-    printf "${BLUE}[*] Installing CME bleeding edge and lsassy ...${NC}\n"
-    apt-get install -y libssl-dev libffi-dev python-dev build-essential
-    cd /opt
-    mkvirtualenv cme
-    git clone --recursive https://github.com/byt3bl33d3r/CrackMapExec
-    cd CrackMapExec
-    python setup.py install
-    #lsassy part
-    python3.7 -m pip install lsassy
-    cd cme/modules
-    wget https://raw.githubusercontent.com/Hackndo/lsassy/master/cme/lsassy.py
-    cd /opt/CrackMapExec
-    python setup.py install
-    deactivate
 }
 
 # Impacket bleeding edge
@@ -287,9 +256,7 @@ install_sqlplus
 install_adidnsdump
 install_powerhub
 install_pypykatz
-install_silenttrinity
 install_cme_stable
-#install_cme_bleeding_edge
 install_impacket_bleeding_edge
 install_bloodhound
 #install_empire_3.0
@@ -316,6 +283,18 @@ printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
 
 printf ' - Change neo4j DB password\n'
 printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/\n\n'
+
+printf ' - Download and install SILENTTRINITY\n'
+printf '   https://github.com/byt3bl33d3r/SILENTTRINITY/actions\n'
+printf '   cd /opt; mkdir silenttrinity; cd silenttrinity\n'
+printf '   copy st-ubuntu-latest.zip into new directory\n'
+printf '   unzip st-ubuntu-latest.zip; chmod +x st; sudo ln -s /opt/silenttrinity/st /usr/local/bin/st\n\n'
+
+printf ' - Download and install CME\n'
+printf '   https://github.com/byt3bl33d3r/CrackMapExec/actions\n'
+printf '   cd /opt; mkdir cme; cd cme\n'
+printf '   copy cme-ubuntu-latest.zip into new directory\n'
+printf '   unzip cme-ubuntu-latest.zip; chmod +x cme; sudo ln -s /opt/cme/cme /usr/local/bin/cme\n\n'
 
 #printf ' - Finish installing Empire\n'
 #printf '   cd /opt/Empire && bash setup/install.sh\n\n'
