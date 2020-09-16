@@ -164,7 +164,7 @@ install_eyewitness () {
     printf "${BLUE}[*] Installing EyeWitness ...${NC}\n"
     cd /opt
     git clone https://github.com/ChrisTruncer/EyeWitness.git
-    cd EyeWitness/setup
+    cd EyeWitness/Python/setup
     ./setup.sh
     echo '#!/bin/bash' > /usr/local/bin/eyewitness
     echo 'cd /opt/EyeWitness/ && ./EyeWitness.py "$@"' >> /usr/local/bin/eyewitness
