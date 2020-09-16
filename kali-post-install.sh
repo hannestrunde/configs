@@ -136,7 +136,7 @@ install_eyewitness () {
     cd EyeWitness/Python/setup
     ./setup.sh
     echo '#!/bin/bash' > /usr/local/bin/eyewitness
-    echo 'cd /opt/EyeWitness/ && ./EyeWitness.py "$@"' >> /usr/local/bin/eyewitness
+    echo 'cd /opt/EyeWitness/Python && ./EyeWitness.py "$@"' >> /usr/local/bin/eyewitness
     chmod +x /usr/local/bin/eyewitness
 }
 
