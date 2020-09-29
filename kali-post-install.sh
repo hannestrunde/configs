@@ -40,6 +40,9 @@ install_docker () {
     apt-get remove docker docker-engine docker.io
     apt-get -y install docker-ce
     systemctl enable docker
+    printf "${BLUE}[*] Installing docker-compose ...${NC}\n"
+    curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
 }
 
 install_mitm6 () {
