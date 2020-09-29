@@ -45,6 +45,10 @@ install_docker () {
     chmod +x /usr/local/bin/docker-compose
 }
 
+install_azure-cli () {
+    apt-get -y install azure-cli
+}
+
 install_mitm6 () {
     printf "${BLUE}[*] Installing mitm6 ...${NC}\n"
     pip3 install mitm6
@@ -254,6 +258,7 @@ install_docker
 
 ## Install pentest stuff
 printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
+install_azure-cli
 install_mitm6
 install_sqlplus
 install_adidnsdump
