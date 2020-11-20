@@ -69,6 +69,15 @@ install_sqlplus () {
     ldconfig
 }
 
+install_rdp_sec_check () {
+    echo | cpan install Encoding::BER
+    cd /opt
+    git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git
+    cd rdp-sec-check
+    chmod +x rdp-sec-check.pl
+    ln -s /opt/rdp-sec-check/rdp-sec-check.pl /usr/local/bin/rdp-sec-check
+}
+
 install_adidnsdump () {
     printf "${BLUE}[*] Installing adidnsdump ...${NC}\n"
     pip install git+https://github.com/dirkjanm/adidnsdump#egg=adidnsdump
@@ -106,7 +115,6 @@ install_cme_latest () {
     unzip cme-ubuntu-latest.4.zip
     chmod +x cme
     ln -s /opt/cme/cme /usr/local/bin/cme
-}
 }
 
 # Impacket bleeding edge
@@ -205,6 +213,16 @@ install_windapsearch () {
     ln -s /opt/windapsearch/windapsearch.py /usr/local/bin/windapsearch
 }
 
+install_go-windapsearch () {
+    printf "${BLUE}[*] Downloading @ropnop's latest go-windapsearch release ...${NC}"
+    cd /opt
+    mkdir go-windapsearch
+    cd go-windapsearch
+    wget 'https://github.com/ropnop/go-windapsearch/releases/latest/download/windapsearch-linux-amd64'
+    chmod +x windapsearch-linux-amd64
+    ln -s /opt/go-windapsearch/windapsearch-linux-amd64 /usr/local/bin/windapsearch
+}
+
 install_impacket_static_binaries () {
     printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}"
     cd /opt
@@ -274,6 +292,7 @@ printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
 install_azure-cli
 install_mitm6
 install_sqlplus
+install_rdp_sec_check
 install_adidnsdump
 install_powerhub
 install_pypykatz
@@ -286,7 +305,8 @@ install_nikto_docker
 install_responder_bleeding_edge
 install_gobuster
 install_ffuf
-install_windapsearch
+#install_windapsearch # replaced by go-windapsearch (both are started via "windapsearch" so make sure you only install one of them)
+install_go-windapsearch
 install_impacket_static_binaries
 install_kerbrute
 
