@@ -14,22 +14,24 @@ install_open_vm_tools () {
 
 setup_go_env () {
     printf "${BLUE}[*] Setting up go environment ...${NC}\n"
-    echo '' >> ~/.bashrc
-    echo '# Initialize go' >> ~/.bashrc
-    echo 'export GOPATH=$HOME/go' >> ~/.bashrc
-    echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bashrc
-    . ~/.bashrc
+    echo '' >> ~/.zshrc
+    echo '# Initialize go' >> ~/.zshrc
+    echo 'export GOPATH=$HOME/go' >> ~/.zshrc
+    echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.zshrc
+    . ~/.zshrc
 }
 
 install_virtualenvwrapper () {
     printf "${BLUE}[*] Installing virtualenvwrapper ...${NC}\n"
-    pip install virtualenvwrapper
-    echo '' >> ~/.bashrc
-    echo '# Initialize virtualenvwrapper' >> ~/.bashrc
-    echo 'export WORKON_HOME=$HOME/.virtualenvs' >> ~/.bashrc
-    echo 'export PROJECT_HOME=$HOME/Devel' >> ~/.bashrc
-    echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.bashrc
-    . ~/.bashrc
+    pip3 install virtualenvwrapper
+    echo '' >> ~/.zshrc
+    echo '# Initialize virtualenvwrapper' >> ~/.zshrc
+    echo 'export WORKON_HOME=$HOME/.virtualenvs' >> ~/.zshrc
+    echo 'export PROJECT_HOME=$HOME/Devel' >> ~/.zshrc
+    echo 'export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3' >> ~/.zshrc
+    echo 'export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv' >> ~/.zshrc
+    echo 'source /usr/local/bin/virtualenvwrapper.sh' >> ~/.zshrc
+    . ~/.zshrc
 }
 
 install_docker () {
@@ -63,6 +65,19 @@ install_azure_stormspotter () {
 install_roadrecon () {
     printf "${BLUE}[*] Installing ROADrecon ...${NC}\n"
     pip3 install roadrecon
+}
+
+install_scoutsuite () {
+    printf "${BLUE}[*] Installing ScoutSuite ...${NC}\n"
+    cd /opt
+    mkvirtualenv scoutsuite
+    git clone https://github.com/nccgroup/ScoutSuite
+    cd ScoutSuite
+    pip3 install -r requirements.txt
+    echo '#!/bin/bash' > /usr/local/bin/powerhub
+    echo 'cd /opt/PowerHub/ && python3 powerhub.py "$@"' >> /usr/local/bin/powerhub
+    chmod +x /usr/local/bin/powerhub
+    deactivate
 }
 
 install_mitm6 () {
