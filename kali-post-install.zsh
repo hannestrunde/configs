@@ -304,7 +304,7 @@ RED='\033[1;31m'
 NC='\033[0m' # No Color
 
 ## Print usage warning
-printf "[!] Make sure to run the script with '${RED}source kali-post-install.zsh${NC}' instead of './kali-post-install.zsh!'\n"
+printf "[!] Make sure to run the script with '${RED}source kali-post-install.zsh${NC}' instead of './kali-post-install.zsh'!\n"
 printf "[!] If you ignore this warning, stuff will likely break!\n"
 printf "[!] Furthermore, it is recommended to tee the script output for troubleshooting: source kali-post-install.zsh | tee log.out\n"
 read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
