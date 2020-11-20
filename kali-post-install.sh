@@ -74,9 +74,9 @@ install_scoutsuite () {
     git clone https://github.com/nccgroup/ScoutSuite
     cd ScoutSuite
     pip3 install -r requirements.txt
-    echo '#!/bin/bash' > /usr/local/bin/powerhub
-    echo 'cd /opt/PowerHub/ && python3 powerhub.py "$@"' >> /usr/local/bin/powerhub
-    chmod +x /usr/local/bin/powerhub
+    echo '#!/bin/zsh' > /usr/local/bin/scout
+    echo 'cd /opt/ScoutSuite/ && python3 scout.py "$@"' >> /usr/local/bin/scout
+    chmod +x /usr/local/bin/scout
     deactivate
 }
 
