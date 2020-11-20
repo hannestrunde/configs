@@ -322,6 +322,7 @@ printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
 install_azure-cli
 install_azure_stormspotter
 install_roadrecon
+install_scoutsuite
 install_mitm6
 install_sqlplus
 install_rdp_sec_check
