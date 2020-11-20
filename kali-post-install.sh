@@ -34,11 +34,13 @@ install_virtualenvwrapper () {
 
 install_docker () {
     printf "${BLUE}[*] Installing docker ...${NC}\n"
-    apt-get -y install apt-transport-https ca-certificates curl gnupg2 software-properties-common
-    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    echo 'deb [arch=amd64] https://download.docker.com/linux/debian buster stable' > /etc/apt/sources.list.d/docker.list
-    apt-get remove docker docker-engine docker.io
-    apt-get -y install docker-ce
+    apt-get remove docker docker-engine docker.io containerd runc
+    apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    apt-key fingerprint 0EBFCD88
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian buster stable"
+    apt-get update
+    apt-get -y install docker-ce docker-ce-cli containerd.io
     systemctl enable docker
     printf "${BLUE}[*] Installing docker-compose ...${NC}\n"
     curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
@@ -48,6 +50,14 @@ install_docker () {
 install_azure-cli () {
     printf "${BLUE}[*] Installing azure-cli ...${NC}\n"
     apt-get -y install azure-cli
+}
+
+install_azure_stormspotter () {
+    printf "${BLUE}[*] Installing Azure Stormspotter ...${NC}\n"
+    cd /opt
+    git clone https://github.com/Azure/Stormspotter
+    cd Stormspotter
+    docker-compose up --no-start
 }
 
 install_mitm6 () {
@@ -290,6 +300,7 @@ install_docker
 ## Install pentest stuff
 printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
 install_azure-cli
+install_azure_stormspotter
 install_mitm6
 install_sqlplus
 install_rdp_sec_check
