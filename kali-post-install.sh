@@ -3,7 +3,7 @@
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
     apt-get -y install apt-transport-https golang
-    apt-get -y install git-core build-essential python-pip python3-pip net-tools bridge-utils ethtool dnsutils nmap
+    apt-get -y install git-core build-essential python3-pip net-tools bridge-utils ethtool dnsutils nmap
     apt-get -y install proxychains wireshark
 }
 
@@ -58,6 +58,11 @@ install_azure_stormspotter () {
     git clone https://github.com/Azure/Stormspotter
     cd Stormspotter
     docker-compose up --no-start
+}
+
+install_roadrecon () {
+    printf "${BLUE}[*] Installing ROADrecon ...${NC}\n"
+    pip3 install roadrecon
 }
 
 install_mitm6 () {
@@ -292,7 +297,7 @@ printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
 apt-get update
 install_eyewitness # installed first because it clears the install log
 install_basic_packages
-install_open_vm_tools
+#install_open_vm_tools # not necessary when using Kali VMware image
 setup_go_env
 install_virtualenvwrapper
 install_docker
@@ -301,6 +306,7 @@ install_docker
 printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
 install_azure-cli
 install_azure_stormspotter
+install_roadrecon
 install_mitm6
 install_sqlplus
 install_rdp_sec_check
