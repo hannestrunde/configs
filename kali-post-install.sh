@@ -46,6 +46,7 @@ install_docker () {
 }
 
 install_azure-cli () {
+    printf "${BLUE}[*] Installing azure-cli ...${NC}\n"
     apt-get -y install azure-cli
 }
 
@@ -94,6 +95,18 @@ install_pypykatz () {
 install_cme_stable () {
     printf "${BLUE}[*] Installing CME stable ...${NC}\n"
     apt-get -y install crackmapexec
+}
+
+install_cme_latest () {
+    printf "${BLUE}[*] Downloading latest CME release ...${NC}"
+    cd /opt
+    mkdir cme
+    cd cme
+    wget 'https://github.com/byt3bl33d3r/CrackMapExec/releases/latest/download/cme-ubuntu-latest.4.zip'
+    unzip cme-ubuntu-latest.4.zip
+    chmod +x cme
+    ln -s /opt/cme/cme /usr/local/bin/cme
+}
 }
 
 # Impacket bleeding edge
@@ -265,6 +278,7 @@ install_adidnsdump
 install_powerhub
 install_pypykatz
 install_cme_stable
+install_cme_latest
 install_impacket_bleeding_edge
 install_bloodhound
 #install_empire_3.0
@@ -297,12 +311,6 @@ printf '   https://github.com/byt3bl33d3r/SILENTTRINITY/actions\n'
 printf '   cd /opt; mkdir silenttrinity; cd silenttrinity\n'
 printf '   copy st-ubuntu-latest.zip into new directory\n'
 printf '   unzip st-ubuntu-latest.zip; chmod +x st; sudo ln -s /opt/silenttrinity/st /usr/local/bin/st\n\n'
-
-printf ' - Download and install CME\n'
-printf '   https://github.com/byt3bl33d3r/CrackMapExec/actions\n'
-printf '   cd /opt; mkdir cme; cd cme\n'
-printf '   copy cme-ubuntu-latest.zip into new directory\n'
-printf '   unzip cme-ubuntu-latest.zip; chmod +x cme; sudo ln -s /opt/cme/cme /usr/local/bin/cme\n\n'
 
 #printf ' - Finish installing Empire\n'
 #printf '   cd /opt/Empire && bash setup/install.sh\n\n'
