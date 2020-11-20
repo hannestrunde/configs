@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
