@@ -14,4 +14,4 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 ## kali-post-install.zsh
 - "printf" and "read" command appear in wrong order when running the script
 - Somewhere during the installation Kali asks for a password for a new "Default" keyring
-  - Workaround: apt -y install seahorse; open application "Passwords and Keys" and creat new Password keyring with name "Default" (choose any pw you like)
+  - Workaround: apt -y install seahorse; open application "Passwords and Keys" and create new "Password Keyring" with name "Default" (choose any pw you like)
