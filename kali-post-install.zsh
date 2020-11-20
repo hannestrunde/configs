@@ -100,6 +100,7 @@ install_sqlplus () {
 }
 
 install_rdp_sec_check () {
+    printf "${BLUE}[*] Installing rdp-sec-check ...${NC}\n"
     echo | cpan install Encoding::BER
     cd /opt
     git clone https://github.com/CiscoCXSecurity/rdp-sec-check.git
@@ -137,7 +138,7 @@ install_cme_stable () {
 }
 
 install_cme_latest () {
-    printf "${BLUE}[*] Downloading latest CME release ...${NC}"
+    printf "${BLUE}[*] Downloading latest CME release ...${NC}\n"
     cd /opt
     mkdir cme
     cd cme
@@ -226,7 +227,7 @@ install_responder_bleeding_edge () {
 }
 
 install_gobuster () {
-    printf "${BLUE}[*] Installing gobuster ...${NC}"
+    printf "${BLUE}[*] Installing gobuster ...${NC}\n"
     go get github.com/OJ/gobuster
 }
 
@@ -236,7 +237,7 @@ install_ffuf () {
 }
 
 install_windapsearch () {
-    printf "${BLUE}[*] Installing windapsearch ...${NC}"
+    printf "${BLUE}[*] Installing windapsearch ...${NC}\n"
     apt-get -y install python-ldap
     cd /opt
     git clone https://github.com/ropnop/windapsearch.git
@@ -244,7 +245,7 @@ install_windapsearch () {
 }
 
 install_go-windapsearch () {
-    printf "${BLUE}[*] Downloading @ropnop's latest go-windapsearch release ...${NC}"
+    printf "${BLUE}[*] Downloading @ropnop's latest go-windapsearch release ...${NC}\n"
     cd /opt
     mkdir go-windapsearch
     cd go-windapsearch
@@ -254,7 +255,7 @@ install_go-windapsearch () {
 }
 
 install_impacket_static_binaries () {
-    printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}"
+    printf "${BLUE}[*] Downloading some of @ropnop's latest stable impacket static binaries ...${NC}\n"
     cd /opt
     mkdir impacket-static-binaries
     cd impacket-static-binaries
@@ -267,7 +268,7 @@ install_impacket_static_binaries () {
 }
 
 install_kerbrute () {
-    printf "${BLUE}[*] Downloading @ropnop's latest kerbrute release ...${NC}"
+    printf "${BLUE}[*] Downloading @ropnop's latest kerbrute release ...${NC}\n"
     cd /opt
     mkdir kerbrute
     cd kerbrute
@@ -278,13 +279,13 @@ install_kerbrute () {
 
 # Disable rpcbind.socket (listening on 0.0.0.0:111)
 disable_rpcbind () {
-    printf "${BLUE}[*] Trying to disable rpcbind.socket ...${NC}"
+    printf "${BLUE}[*] Trying to disable rpcbind.socket ...${NC}\n"
     systemctl stop rpcbind.socket
     systemctl disable rpcbind.socket
 }
 
 configure_tmux () {
-    printf "${BLUE}[*] Downloading tmux.conf ...${NC}"
+    printf "${BLUE}[*] Downloading tmux.conf ...${NC}\n"
     cd ~
     wget https://raw.githubusercontent.com/cyberfreaq/configs/master/.tmux.conf
 }
