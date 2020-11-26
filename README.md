@@ -4,11 +4,21 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 
 # Todo
 ## kali-post-install.zsh
+- [ ] Add zerologon_tester.py
+- [ ] install_bloodhound (): add neo4j Config to repo and download and replace (Listening on 0.0.0.0)
+- [ ] install_lsassy (): Download procdump to /root/tools/procdump
 - [X] Add ScoutSuite
 - [X] Add https://github.com/CiscoCXSecurity/rdp-sec-check
 - [X] Add https://github.com/ropnop/go-windapsearch 
 - [X] Add https://github.com/Azure/Stormspotter
 - [X] Add roadrecon
+
+## w10-vm-post-install.ps1
+- [ ] Create PS1 Script
+- [ ] Install Azure Powershell
+- [ ] Install Azure AD Powershell
+- [ ] Install AD Powershell (RSAT)
+- [ ] Download current SysInternals
 
 # Known Issues
 ## kali-post-install.zsh
