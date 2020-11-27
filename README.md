@@ -7,6 +7,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 - [ ] Add zerologon_tester.py
 - [ ] install_bloodhound (): add neo4j Config to repo and download and replace (Listening on 0.0.0.0)
 - [ ] install_lsassy (): Download procdump to /root/tools/procdump
+- [ ] Add pypykatz
 - [X] Add ScoutSuite
 - [X] Add https://github.com/CiscoCXSecurity/rdp-sec-check
 - [X] Add https://github.com/ropnop/go-windapsearch 
