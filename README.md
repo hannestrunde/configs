@@ -8,6 +8,8 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 - [ ] install_bloodhound (): add neo4j Config to repo and download and replace (Listening on 0.0.0.0)
 - [ ] install_lsassy (): Download procdump to /root/tools/procdump
 - [ ] Add pypykatz
+- [ ] Add https://github.com/preempt/ntlm-scanner
+  - Look also in the PR: https://github.com/preempt/ntlm-scanner/pull/1
 - [X] Add ScoutSuite
 - [X] Add https://github.com/CiscoCXSecurity/rdp-sec-check
 - [X] Add https://github.com/ropnop/go-windapsearch 
