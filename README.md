@@ -7,6 +7,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 - [ ] Add printerbug.py (krbrelayx repo from dirkjanm)
 - [ ] Add https://github.com/dirkjanm/PrivExchange
 - [ ] Add zerologon_tester.py
+- [ ] Add bloodhound 4.0
 - [ ] install_bloodhound (): add neo4j Config to repo and download and replace (Listening on 0.0.0.0)
 - [ ] install_lsassy (): Download procdump to /root/tools/procdump
 - [ ] Add pypykatz
