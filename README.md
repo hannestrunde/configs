@@ -9,9 +9,9 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 - [ ] Add zerologon_tester.py
 - [ ] Add bloodhound 4.0
 - [ ] install_bloodhound (): add neo4j Config to repo and download and replace (Listening on 0.0.0.0)
-- [ ] install_lsassy (): Download procdump to /root/tools/procdump
+- [X] install_lsassy (): Download procdump to /root/tools/procdump
     - https://download.sysinternals.com/files/Procdump.zip
-- [ ] Add pypykatz
+- [X] Add pypykatz
 - [ ] Add https://github.com/preempt/ntlm-scanner
   - Also consider this PR: https://github.com/preempt/ntlm-scanner/pull/1
 - [X] Add ScoutSuite
