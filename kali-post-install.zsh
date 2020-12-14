@@ -148,6 +148,14 @@ install_cme_latest () {
     ln -s /opt/cme/cme /usr/local/bin/cme
 }
 
+install_lsassy_procdump () {
+    printf "${BLUE}[*] Installing lsassy, downloading and configuring procdump for lsassy ...${NC}\n"
+    python3 -m pip install lsassy
+    mkdir -p /root/tools/procdump
+    curl -L https://download.sysinternals.com/files/Procdump.zip -o /root/tools/procdump/procdump.zip
+    unzip /root/tools/procdump/procdump.zip
+}
+
 # Impacket bleeding edge
 install_impacket_bleeding_edge () {
     printf "${BLUE}[*] Installing impacket bleeding edge ...${NC}\n"
@@ -332,7 +340,8 @@ install_adidnsdump
 install_powerhub
 install_pypykatz
 install_cme_stable
-install_cme_latest
+#install_cme_latest #  not necessary anymore because CME updates are Kali-exclusive for 30 days
+install_lsassy_procdump
 install_impacket_bleeding_edge
 install_bloodhound
 #install_empire_3.0
