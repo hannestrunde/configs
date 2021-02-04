@@ -285,6 +285,18 @@ install_kerbrute () {
     ln -s /opt/kerbrute/kerbrute_linux_amd64 /usr/local/bin/kerbrute
 }
 
+update_seclists () {
+    printf "${BLUE}[*] Pull latest changes to SecLists ...${NC}\n"
+    cd ~/tools/SecLists
+    git pull
+}
+
+update_payloadsallthethings () {
+    printf "${BLUE}[*] Pull latest changes to PayloadsAllTheThings ...${NC}\n"
+    cd ~/tools/PayloadsAllTheThings
+    git pull
+}
+
 # Disable rpcbind.socket (listening on 0.0.0.0:111)
 disable_rpcbind () {
     printf "${BLUE}[*] Trying to disable rpcbind.socket ...${NC}\n"
@@ -353,6 +365,10 @@ install_ffuf
 install_go-windapsearch
 install_impacket_static_binaries
 install_kerbrute
+
+## Update payloads, etc.
+update_seclists
+update_payloadsallthethings
 
 ## Outdated
 #install_empire
