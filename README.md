@@ -6,6 +6,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 ## kali-post-install.zsh
 - [ ] Add masscan from Repo
 - [ ] Add https://github.com/CBHue/PyFuscation
+- [ ] Add https://github.com/dirkjanm/krbrelayx
 - [ ] Add https://github.com/saravana815/dhtest.git
 - [ ] Add https://github.com/knavesec/Max
 - [ ] Add printerbug.py (krbrelayx repo from dirkjanm)
