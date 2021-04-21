@@ -285,6 +285,18 @@ install_kerbrute () {
     ln -s /opt/kerbrute/kerbrute_linux_amd64 /usr/local/bin/kerbrute
 }
 
+install_masscan () {
+    printf "${BLUE}[*] Installing latest masscan ...${NC}\n"
+    apt -y install clang git gcc make libpcap-dev
+    cd /opt
+    git clone https://github.com/robertdavidgraham/masscan
+    cd masscan
+    make -j
+    
+    # Take precedence over pre-installed masscan as /usr/local/bin occurs before /usr/bin in $PATH
+    ln -s /opt/masscan/bin/masscan /usr/local/bin/masscan
+}
+
 update_seclists () {
     printf "${BLUE}[*] Pull latest changes to SecLists ...${NC}\n"
     cd ~/tools/SecLists
@@ -365,6 +377,7 @@ install_ffuf
 install_go-windapsearch
 install_impacket_static_binaries
 install_kerbrute
+install_masscan
 
 ## Update payloads, etc.
 update_seclists
