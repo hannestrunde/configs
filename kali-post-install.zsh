@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+########################################
+## Install basic stuff and prerequisites
+########################################
+
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
     apt-get -y install apt-transport-https golang
@@ -48,6 +52,10 @@ install_docker () {
     curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
 }
+
+########################
+## Install pentest stuff
+########################
 
 install_azure-cli () {
     printf "${BLUE}[*] Installing azure-cli ...${NC}\n"
@@ -308,6 +316,20 @@ install_pyfuscation () {
     chmod +x /usr/local/bin/pyfuscation
 }
 
+###########################################
+## Download red team tooling, scripts, etc.
+###########################################
+
+download_invokemimikatz () {
+    printf "${BLUE}[*] Downloading latest Invoke-Mimikatz.ps1 from BC-Security ...${NC}\n"
+    mkdir -p /root/tools/
+    curl -L https://raw.githubusercontent.com/BC-SECURITY/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1 -o /root/tools/Invoke-Mimikatz.ps1
+}
+
+########################
+## Update payloads, etc.
+########################
+
 update_seclists () {
     printf "${BLUE}[*] Pull latest changes to SecLists ...${NC}\n"
     cd ~/tools/SecLists
@@ -319,6 +341,10 @@ update_payloadsallthethings () {
     cd ~/tools/PayloadsAllTheThings
     git pull
 }
+
+######################
+## Configuration stuff
+######################
 
 # Disable rpcbind.socket (listening on 0.0.0.0:111)
 disable_rpcbind () {
@@ -341,9 +367,12 @@ configure_time () {
 ################ MAIN SECTION ###############
 
 ## Color Coding
+# https://www.shellhacks.com/bash-colors/
+
 BLUE='\033[1;34m'
 YELLOW='\033[1;33m'
 RED='\033[1;31m'
+GREEN='\033[1;32m'
 NC='\033[0m' # No Color
 
 ## Print usage warning
@@ -353,7 +382,7 @@ printf "[!] Furthermore, it is recommended to tee the script output for troubles
 read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
 
 ## Install basic stuff and prerequisites
-printf "${BLUE}[+] Installing basic stuff and prerequisites ...${NC}\n"
+printf "${GREEN}[+] Installing basic stuff and prerequisites ...${NC}\n"
 apt-get update
 install_eyewitness # installed first because it clears the install log
 install_basic_packages
@@ -363,7 +392,7 @@ install_virtualenvwrapper
 install_docker
 
 ## Install pentest stuff
-printf "${BLUE}[+] Installing pentest stuff ...${NC}\n"
+printf "${GREEN}[+] Installing pentest stuff ...${NC}\n"
 install_azure-cli
 install_azure_stormspotter
 install_roadrecon
@@ -390,7 +419,12 @@ install_impacket_static_binaries
 install_kerbrute
 install_masscan
 
+## Download red team tooling, scripts, etc.
+printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
+download_invokemimikatz
+
 ## Update payloads, etc.
+printf "${GREEN}[+] Updating payloads, wordlists, etc. ...${NC}\n"
 update_seclists
 update_payloadsallthethings
 
@@ -398,7 +432,7 @@ update_payloadsallthethings
 #install_empire
 
 ## Configuration stuff
-printf "${BLUE}[+] Starting configuration stuff ...${NC}\n"
+printf "${GREEN}[+] Starting configuration stuff ...${NC}\n"
 disable_rpcbind
 configure_tmux
 configure_time
