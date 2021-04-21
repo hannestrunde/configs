@@ -297,6 +297,17 @@ install_masscan () {
     ln -s /opt/masscan/bin/masscan /usr/local/bin/masscan
 }
 
+install_pyfuscation () {
+    printf "${BLUE}[*] Installing PyFuscation ...${NC}\n"
+    cd /opt
+    git clone https://github.com/CBHue/PyFuscation.git
+    cd PyFuscation
+    chmod +x PyFuscation.py
+    echo '#!/bin/bash' > /usr/local/bin/pyfuscation
+    echo 'cd /opt/PyFuscation/ && ./PyFuscation.py "$@"' >> /usr/local/bin/pyfuscation
+    chmod +x /usr/local/bin/pyfuscation
+}
+
 update_seclists () {
     printf "${BLUE}[*] Pull latest changes to SecLists ...${NC}\n"
     cd ~/tools/SecLists
