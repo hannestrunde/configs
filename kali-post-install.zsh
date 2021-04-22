@@ -359,6 +359,18 @@ install_silentbridge () {
     
     # auto answer script prompts: https://stackoverflow.com/questions/3804577/have-bash-script-answer-interactive-prompts#comment88976526_3804645
     printf '%s\n' 2 N N | ./quick-setup
+    deactivate
+    
+    # https://linuxize.com/post/bash-heredoc/
+	cat << "EOF" >> /usr/local/bin/silentbridge
+#!/bin/bash
+if [[ $VIRTUAL_ENV != "/root/virtualenvs/silentbridge" ]]; then source /root/virtualenvs/silentbridge/bin/activate; fi
+printf "[!] Running in virtualenv $VIRTUAL_ENV\n"
+cd /opt/silentbridge/ && ./silentbridge "$@"
+printf "\n[!] Deactivating virtualenv $VIRTUAL_ENV"
+deactivate
+EOF
+    chmod +x /usr/local/bin/silentbridge
 }
 
 ###########################################
@@ -465,6 +477,7 @@ install_impacket_static_binaries
 install_kerbrute
 install_masscan
 install_krbrelayx
+install_silentbridge
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
