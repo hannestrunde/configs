@@ -6,11 +6,10 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 ## kali-post-install.zsh
 - [X] Add masscan from Repo
 - [X] Add https://github.com/CBHue/PyFuscation
-- [ ] Add silentbridge
+- [X] Add silentbridge
 - [X] Add https://github.com/dirkjanm/krbrelayx
 - [ ] Add https://github.com/saravana815/dhtest.git
 - [ ] Add https://github.com/knavesec/Max
-- [ ] Add printerbug.py (krbrelayx repo from dirkjanm)
 - [ ] Add https://github.com/dirkjanm/PrivExchange
 - [ ] Add zerologon_tester.py
 - [ ] Add bloodhound 4.0
