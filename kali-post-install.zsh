@@ -4,6 +4,16 @@
 ## Install basic stuff and prerequisites
 ########################################
 
+install_python2environment () {
+    cd /tmp
+    wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+    python get-pip.py
+    pip2 install --upgrade setuptools
+    python -m pip install virtualenv
+    # in order to not overwrite it when python3-pip is installed
+    mv /usr/local/bin/virtualenv /usr/local/bin/virtualenvpy2 
+}
+
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
     apt-get -y install apt-transport-https golang
@@ -336,6 +346,21 @@ install_krbrelayx () {
     chmod +x /usr/local/bin/printerbug
 }
 
+install_silentbridge () {
+    printf "${BLUE}[*] Installing silentbridge ...${NC}\n"
+    apt install -y git-core build-essential python3-pip net-tools bridge-utils ethtool dnsutils nmap
+    mkdir -p /root/virtualenvs/
+    cd /root/virtualenvs
+    python -m virtualenv silentbridge
+    source silentbridge/bin/activate
+    cd /opt
+    git clone https://github.com/s0lst1c3/silentbridge.git
+    cd silentbridge
+    
+    # auto answer script prompts: https://stackoverflow.com/questions/3804577/have-bash-script-answer-interactive-prompts#comment88976526_3804645
+    printf '%s\n' 2 N N | ./quick-setup
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -405,6 +430,7 @@ read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
 printf "${GREEN}[+] Installing basic stuff and prerequisites ...${NC}\n"
 apt-get update
 install_eyewitness # installed first because it clears the install log
+install_python2environment
 install_basic_packages
 #install_open_vm_tools # not necessary when using Kali VMware image
 setup_go_env
