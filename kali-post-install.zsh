@@ -364,11 +364,9 @@ install_silentbridge () {
     # https://linuxize.com/post/bash-heredoc/
 	cat << "EOF" >> /usr/local/bin/silentbridge
 #!/bin/bash
-if [[ $VIRTUAL_ENV != "/root/virtualenvs/silentbridge" ]]; then source /root/virtualenvs/silentbridge/bin/activate; fi
-printf "[!] Running in virtualenv $VIRTUAL_ENV\n"
+if [[ $VIRTUAL_ENV != "/root/virtualenvs/silentbridge" ]]; then source /root/virtualenvs/silentbridge/bin/activate; venv_invoked="True"; printf "[!] Activated virtualenv $VIRTUAL_ENV\n";  fi
 cd /opt/silentbridge/ && ./silentbridge "$@"
-printf "\n[!] Deactivating virtualenv $VIRTUAL_ENV"
-deactivate
+if [[ $venv_invoked == "True" ]]; then printf "\n[!] Deactivating virtualenv $VIRTUAL_ENV"; deactivate; fi
 EOF
     chmod +x /usr/local/bin/silentbridge
 }
