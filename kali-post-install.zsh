@@ -316,6 +316,26 @@ install_pyfuscation () {
     chmod +x /usr/local/bin/pyfuscation
 }
 
+install_krbrelayx () {
+    printf "${BLUE}[*] Installing krbrelayx.py ...${NC}\n"
+    cd /opt
+    git clone https://github.com/dirkjanm/krbrelayx
+    cd krbrelayx
+    chmod +x addspn.py dnstool.py krbrelayx.py printerbug.py
+    echo '#!/bin/bash' > /usr/local/bin/addspn
+    echo 'cd /opt/krbrelayx/ && python3 addspn.py "$@"' >> /usr/local/bin/addspn
+    chmod +x /usr/local/bin/addspn
+    echo '#!/bin/bash' > /usr/local/bin/dnstool
+    echo 'cd /opt/krbrelayx/ && python3 dnstool.py "$@"' >> /usr/local/bin/dnstool
+    chmod +x /usr/local/bin/dnstool
+    echo '#!/bin/bash' > /usr/local/bin/krbrelayx
+    echo 'cd /opt/krbrelayx/ && python3 krbrelayx.py "$@"' >> /usr/local/bin/krbrelayx
+    chmod +x /usr/local/bin/krbrelayx
+    echo '#!/bin/bash' > /usr/local/bin/printerbug
+    echo 'cd /opt/krbrelayx/ && python3 printerbug.py "$@"' >> /usr/local/bin/printerbug
+    chmod +x /usr/local/bin/printerbug
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -418,6 +438,7 @@ install_go-windapsearch
 install_impacket_static_binaries
 install_kerbrute
 install_masscan
+install_krbrelayx
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
