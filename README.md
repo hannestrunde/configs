@@ -4,6 +4,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 
 # Todo
 ## kali-post-install.zsh
+- [ ] Add nuclei
 - [X] Add masscan from Repo
 - [X] Add https://github.com/CBHue/PyFuscation
 - [X] Add silentbridge
