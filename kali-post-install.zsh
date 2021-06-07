@@ -371,6 +371,17 @@ EOF
     chmod +x /usr/local/bin/silentbridge
 }
 
+install_maxpy () {
+    printf "${BLUE}[*] Installing Max.py ...${NC}\n"
+    cd /opt
+    git clone https://github.com/knavesec/Max.git
+    cd Max
+    pip3 install -r requirements.txt
+    echo '#!/bin/bash' > /usr/local/bin/max
+    echo 'cd /opt/Max && python3 max.py "$@"' >> /usr/local/bin/max
+    chmod +x /usr/local/bin/max
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -476,6 +487,7 @@ install_kerbrute
 install_masscan
 install_krbrelayx
 install_silentbridge
+install_maxpy
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
@@ -501,6 +513,8 @@ printf "${YELLOW}\n\n[+] LEFT TO DO${NC}\n"
 
 printf ' - Change neo4j DB password\n'
 printf '   https://stealingthe.network/quick-guide-to-installing-bloodhound-in-kali-rolling/\n\n'
+
+printf ' - Add neo4j DB password to /opt/Max/max.py\n\n'
 
 printf ' - Download and install SILENTTRINITY\n'
 printf '   https://github.com/byt3bl33d3r/SILENTTRINITY/actions\n'
