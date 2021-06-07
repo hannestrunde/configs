@@ -451,7 +451,6 @@ read -s -k $'?Press any key to proceed or Strg+C to cancel ...\n'
 printf "${GREEN}[+] Installing basic stuff and prerequisites ...${NC}\n"
 apt-get update
 install_eyewitness # installed first because it clears the install log
-install_roadrecon  # installed seconed because of keychain prompt - after that, installation should continue without any further prompts
 install_python2environment
 install_basic_packages
 #install_open_vm_tools # not necessary when using Kali VMware image
@@ -461,6 +460,7 @@ install_docker
 
 ## Install pentest stuff
 printf "${GREEN}[+] Installing pentest stuff ...${NC}\n"
+install_roadrecon  # install first because of keychain prompt - after that, installation should continue without any further prompts
 install_azure-cli
 install_azure_stormspotter
 install_scoutsuite
