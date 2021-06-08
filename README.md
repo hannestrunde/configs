@@ -4,6 +4,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 
 # Todo
 ## kali-post-install.zsh
+- [ ] Change /usr/local/bin links to 'python3 /opt/folder/tool.py "$@"' instead of 'cd /opt/folder/.....' to make sure that file parameters are working from the current directory
 - [ ] Add nuclei
 - [X] Add masscan from Repo
 - [X] Add https://github.com/CBHue/PyFuscation
