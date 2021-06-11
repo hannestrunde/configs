@@ -5,6 +5,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 # Todo
 ## kali-post-install.zsh
 - [ ] Download and unzip Processhacker
+- [ ] Install EyeWitness via apt?
 - [ ] Configure Samba readonly and write shares
 - [ ] Change /usr/local/bin links to 'python3 /opt/folder/tool.py "$@"' instead of 'cd /opt/folder/.....' to make sure that file parameters are working from the current directory
 - [ ] Add nuclei
