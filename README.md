@@ -14,7 +14,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 - [X] Add silentbridge
 - [X] Add https://github.com/dirkjanm/krbrelayx
 - [ ] Add https://github.com/saravana815/dhtest.git
-- [ ] Add https://github.com/knavesec/Max
+- [X] Add https://github.com/knavesec/Max
 - [ ] Add https://github.com/dirkjanm/PrivExchange
 - [ ] Add zerologon_tester.py
 - [ ] Add bloodhound 4.0
