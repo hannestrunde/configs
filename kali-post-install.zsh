@@ -248,7 +248,7 @@ install_responder_bleeding_edge () {
     cd /opt
     git clone https://github.com/lgandx/Responder.git
     echo '#!/bin/bash' > /usr/local/bin/responder-dev
-    echo 'cd /opt/Responder/ && ./Responder.py "$@"' >> /usr/local/bin/responder-dev
+    echo 'python3 /opt/Responder/Responder.py "$@"' >> /usr/local/bin/responder-dev
     chmod +x /usr/local/bin/responder-dev
 }
 
