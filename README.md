@@ -4,6 +4,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 
 # Todo
 ## kali-post-install.zsh
+- [ ] Add https://github.com/cube0x0/CVE-2021-1675
 - [ ] Download and unzip Processhacker
 - [ ] Install EyeWitness via apt?
 - [ ] Configure Samba readonly and write shares
