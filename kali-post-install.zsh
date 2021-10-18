@@ -389,7 +389,7 @@ install_maxpy () {
 download_invokemimikatz () {
     printf "${BLUE}[*] Downloading latest Invoke-Mimikatz.ps1 from BC-Security ...${NC}\n"
     mkdir -p /root/tools/
-    curl -L https://raw.githubusercontent.com/BC-SECURITY/Empire/master/data/module_source/credentials/Invoke-Mimikatz.ps1 -o /root/tools/Invoke-Mimikatz.ps1
+    curl -L "https://github.com/BC-SECURITY/Empire/blob/master/empire/server/data/module_source/credentials/Invoke-Mimikatz.ps1?raw=true" -o /root/tools/Invoke-Mimikatz.ps1
 }
 
 ########################
