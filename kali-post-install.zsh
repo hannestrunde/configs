@@ -393,6 +393,14 @@ install_pcredz () {
     chmod +x /usr/local/bin/pcredz
 }
 
+install_certipy () {
+    printf "${BLUE}[*] Installing Certipy ...${NC}\n"
+    cd /opt
+    git clone https://github.com/ly4k/Certipy.git
+    cd Certipy
+    python3 setup.py install
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -500,6 +508,7 @@ install_krbrelayx
 install_silentbridge
 install_maxpy
 install_pcredz
+install_certipy
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
