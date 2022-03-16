@@ -153,6 +153,9 @@ install_pypykatz () {
 install_cme_stable () {
     printf "${BLUE}[*] Installing CME stable ...${NC}\n"
     apt-get -y install crackmapexec
+    echo "" >> ~/.cme/cme.conf
+    echo "[BloodHound]" >> ~/.cme/cme.conf
+    echo "bh_enabled=False" >> ~/.cme/cme.conf
 }
 
 install_cme_latest () {
