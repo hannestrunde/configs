@@ -382,6 +382,17 @@ install_maxpy () {
     chmod +x /usr/local/bin/max
 }
 
+install_pcredz () {
+    printf "${BLUE}[*] Installing PCredz ...${NC}\n"
+    apt install -y python3-pip libpcap-dev
+    pip3 install Cython python-libpcap
+    cd /opt
+    git clone https://github.com/lgandx/PCredz.git
+    echo '#!/bin/bash' > /usr/local/bin/pcredz
+    echo 'cd /opt/PCredz/ && python3 Pcredz "$@"' >> /usr/local/bin/pcredz
+    chmod +x /usr/local/bin/pcredz
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -488,6 +499,7 @@ install_masscan
 install_krbrelayx
 install_silentbridge
 install_maxpy
+install_pcredz
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
