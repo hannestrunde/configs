@@ -404,6 +404,17 @@ install_certipy () {
     python3 setup.py install
 }
 
+install_donpapi () {
+    printf "${BLUE}[*] Installing DonPAPI ...${NC}\n"
+    cd /opt
+    git clone https://github.com/login-securite/DonPAPI.git
+    cd DonPAPI
+    python3 -m pip install -r requirements.txt
+    echo '#!/bin/bash' > /usr/local/bin/donpapi
+    echo 'cd /opt/DonPAPI/ && python3 DonPAPI "$@"' >> /usr/local/bin/donpapi
+    chmod +x /usr/local/bin/donpapi
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -512,6 +523,7 @@ install_silentbridge
 install_maxpy
 install_pcredz
 install_certipy
+install_donpapi
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
