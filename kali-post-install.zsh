@@ -381,7 +381,7 @@ install_maxpy () {
     cd Max
     pip3 install -r requirements.txt
     echo '#!/bin/bash' > /usr/local/bin/max
-    echo 'cd /opt/Max && python3 max.py "$@"' >> /usr/local/bin/max
+    echo 'python3 /opt/Max/max.py "$@"' >> /usr/local/bin/max
     chmod +x /usr/local/bin/max
 }
 
