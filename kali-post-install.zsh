@@ -426,6 +426,21 @@ install_ldaprelayscan () {
     chmod +x /usr/local/bin/ldaprelayscan
 }
 
+install_printnightmare () {
+    printf "${BLUE}[*] Installing PrintNightmare exploit script from cube0x0 ...${NC}\n"
+    cd /opt
+    mkvirtualenv printnightmare
+    git clone https://github.com/cube0x0/impacket impacket-printnightmare
+    cd impacket-printnightmare
+    python3 ./setup.py install
+    cd /opt
+    git clone https://github.com/cube0x0/CVE-2021-1675.git
+    echo '#!/bin/bash' > /usr/local/bin/cve-2021-1675
+    echo 'python3 /opt/CVE-2021-1675/CVE-2021-1675.py "$@"' >> /usr/local/bin/cve-2021-1675
+    chmod +x /usr/local/bin/cve-2021-1675
+    deactivate
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -536,6 +551,7 @@ install_pcredz
 install_certipy
 install_donpapi
 install_ldaprelayscan
+install_printnightmare
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
