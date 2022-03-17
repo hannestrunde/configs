@@ -415,6 +415,17 @@ install_donpapi () {
     chmod +x /usr/local/bin/donpapi
 }
 
+install_ldaprelayscan () {
+    printf "${BLUE}[*] Installing LdapRelayScan ...${NC}\n"
+    cd /opt
+    git clone https://github.com/zyn3rgy/LdapRelayScan.git
+    cd LdapRelayScan
+    python3 -m pip install -r requirements.txt
+    echo '#!/bin/bash' > /usr/local/bin/ldaprelayscan
+    echo 'cd /opt/LdapRelayScan && python3 LdapRelayScan.py "$@"' >> /usr/local/bin/ldaprelayscan
+    chmod +x /usr/local/bin/ldaprelayscan
+}
+
 ###########################################
 ## Download red team tooling, scripts, etc.
 ###########################################
@@ -524,6 +535,7 @@ install_maxpy
 install_pcredz
 install_certipy
 install_donpapi
+install_ldaprelayscan
 
 ## Download red team tooling, scripts, etc.
 printf "${GREEN}[+] Downloading red team tooling, scripts, etc. ...${NC}\n"
