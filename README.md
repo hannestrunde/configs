@@ -4,7 +4,7 @@ A custom preset file to use with https://github.com/Disassembler0/Win10-Initial-
 
 # Todo
 ## kali-post-install.zsh
-- [ ] Add jconsole 
+- [ ] Add jconsole
 - [X] Add https://github.com/cube0x0/CVE-2021-1675
 - [X] Add https://github.com/byt3bl33d3r/ItWasAllADream
 - [ ] Download and unzip Processhacker
