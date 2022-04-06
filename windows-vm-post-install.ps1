@@ -14,7 +14,7 @@ git clone https://github.com/NetSPI/MicroBurst.git
 
 ## Download specific tools
 Invoke-WebRequest -URI "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe" -OutFile SharpHound.exe
-Invoke-WebRequest -URI "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1" -OutFile SharpHound.ps1
+Invoke-WebRequest -URI "https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/AzureHound.ps1" -OutFile SharpHound.ps1
 Invoke-WebRequest -URI "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_x64/Certify.exe" -OutFile Certify.exe
 Invoke-WebRequest -URI "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_Any/Rubeus.exe" -OutFile Rubeus.exe
 Invoke-WebRequest -URI "https://github.com/Flangvik/SharpCollection/raw/master/NetFramework_4.7_Any/Seatbelt.exe" -OutFile Seatbelt.exe
