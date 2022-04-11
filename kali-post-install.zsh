@@ -17,7 +17,7 @@ install_python2environment () {
 install_basic_packages () {
     printf "${BLUE}[*] Installing basic pkgs ...${NC}\n"
     apt-get -y install apt-transport-https golang
-    apt-get -y install git-core build-essential python3-pip net-tools bridge-utils ethtool dnsutils nmap
+    apt-get -y install git-core build-essential python3-pip net-tools bridge-utils ethtool dnsutils nmap jq
     apt-get -y install proxychains wireshark telnet
 }
 
